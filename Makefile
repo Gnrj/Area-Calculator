@@ -7,12 +7,12 @@ FILES := main.o flags.o functions.o
 
 TRG := compile_main compile_flags compile_functions
 
-all: run clean ## make run and clean
+all: run clean ## Make run and clean
 
 help: ## Show help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-link_files: ${TRG} ## Link all files and compile to program.x
+link_files: ${TRG} ## Compile and link all files to program.x
 	@${CC} -m32 ${FILES} -o $(X_FILE)
 
 compile_main: main.c ## Сompile main.c
@@ -24,7 +24,7 @@ compile_flags: src/flags.c ## Compile flags.c
 compile_functions: srasm/functions.asm ## Сompile functions.asm
 	@${NASM} -f elf32 srasm/functions.asm -o functions.o
 
-run: link_files ## Compile and run programm
+run: link_files ## Compile and link all files and run program
 	@./${X_FILE} $(CFLAGS)
 
 clean: ## Clean output file
