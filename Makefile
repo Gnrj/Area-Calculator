@@ -3,9 +3,9 @@ CC := gcc
 NASM := nasm
 X_FILE := program.x
 
-FILES := main.o flags.o functions.o
+FILES := main.o flags.o functions.o chords.o
 
-TRG := compile_main compile_flags compile_functions
+TRG := compile_main compile_flags compile_functions compile_chords
 
 all: run clean ## Make run and clean
 
@@ -23,6 +23,9 @@ compile_flags: src/flags.c ## Compile flags.c
 
 compile_functions: srasm/functions.asm ## Сompile functions.asm
 	@${NASM} -f elf32 srasm/functions.asm -o functions.o
+
+compile_chords: src/chords.c ## Compile chords.c
+	@${CC} -m32 -std=c99 -c -lm src/chords.c -o chords.o
 
 run: link_files ## Compile and link all files and run program
 	@./${X_FILE} $(CFLAGS)

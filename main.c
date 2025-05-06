@@ -5,13 +5,19 @@
 
 int main(int argc, char* argv[]) {
 
-    int errors = flags(argc, argv);
+    int mode = flags(argc, argv);
 
-    if (errors) {
-        return 1;
+    printf("%d\n", mode);
+
+    if (mode == 0) {
+        return 0;
     }
 
-    float x = f1(-3.2656);
+    float x = root(f1, f2, 1.0, 3.0, 0.001);
+
+    // float x = root(f1, f3, 0.01, 0.5, 0.001);
+
+    // float x = root(f2, f3, 1.0, 2.0, 0.001);
 
     printf("x = %f\n", x);
 
