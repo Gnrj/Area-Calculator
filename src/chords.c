@@ -14,7 +14,6 @@ float Fx(Func f1, Func f2, float x, float b) {
 }
 
 float root(Func f1, Func f2, float a, float b, float e) {
-
     float x = a;
 
     while (!(fabs(Fx(f1, f2, x, b) - x) < e)) {

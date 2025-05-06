@@ -5,7 +5,7 @@ int flags(int argc, char* argv[]) {
     struct option long_options[] = {
         {"help", no_argument, 0, 'h'},
         {"points", no_argument, 0, 'p'},
-        {"count", no_argument, 0, 'c'},
+        {"iterations", no_argument, 0, 'i'},
         {0, 0, 0, 0}
 
     };
@@ -14,26 +14,24 @@ int flags(int argc, char* argv[]) {
 
     int mode = 0;
 
-    while ((opt = getopt_long(argc, argv, "hpck:",
+    while ((opt = getopt_long(argc, argv, "hpik:",
 
                               long_options, NULL)) != -1) {
         switch (opt) {
         case 'h':
             printf("Help menu\n");
-            return 0;
+            return 1;
             break;
         case 'p':
-            printf("Verbose level:\n");
-            ++mode;
-            break;
-        case 'c':
-            printf("DJhfjshfjs\n");
             mode += 2;
+            break;
+        case 'i':
+            mode += 3;
             break;
         default:
             printf("Unknown option: %c\n", opt);
 
-            return 1;
+            return 4;
         }
     }
 

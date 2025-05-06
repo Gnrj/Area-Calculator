@@ -3,7 +3,7 @@ global f1
 global f2
 global f3
 
-f1: ;exp(-x)-3
+f1: ;exp(-x)+3
     push ebp
     mov ebp, esp
     sub esp, 4
