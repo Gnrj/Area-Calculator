@@ -4,7 +4,7 @@
 
 #include "header_file.h"
 
-#define VAREPSILON_1 99e-8f
+#define VAREPSILON_1 0.001 - (1e-10f)
 #define VAREPSILON_2 1e-10f
 
 typedef float (*Func)(float);
