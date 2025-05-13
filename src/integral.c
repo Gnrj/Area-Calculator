@@ -7,7 +7,7 @@
 
 typedef float (*Func)(float);
 
-int rate_test(Func f, float a1, float a2, float esp2) {
+int rate(Func f, float a1, float a2, float esp2) {
 
     float dif = fabs((a2 - a1) * (a2 - a1) * (a2 - a1));
 
@@ -24,14 +24,12 @@ void swap_float(float* a, float* b) {
 
 float integral(Func f1, Func sec_def_f, float a, float b, float esp2) {
 
-    int n = rate_test(sec_def_f, a, b, esp2);
+    int n = rate(sec_def_f, a, b, esp2);
 
     if (a - b > EPS) {
         swap_float(&a, &b);
     }
 
-    // int n = separation;
-    printf("n = %d\n", n);
     float sum = f1(a) + f1(b);
 
     for (int k = 1; k < n - 1; k++) {

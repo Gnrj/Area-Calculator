@@ -16,11 +16,11 @@ float F_x(Func f1, Func f2, float x, float b) {
 float root(Func f1, Func f2, float a, float b, float e) {
     float x = a;
 
-    iterations++;
+    iterations_chords++;
 
     while (!(fabs(F_x(f1, f2, x, b) - x) < e)) {
         x = F_x(f1, f2, x, b);
-        iterations++;
+        iterations_chords++;
     }
 
     return x;

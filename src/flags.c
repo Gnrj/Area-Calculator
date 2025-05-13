@@ -19,7 +19,7 @@ int flags(int argc, char* argv[]) {
                               long_options, NULL)) != -1) {
         switch (opt) {
         case 'h':
-            printf("Help menu\n");
+            printf("Help menu:\n");
             return 1;
             break;
         case 'p':
