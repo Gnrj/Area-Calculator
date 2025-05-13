@@ -1,60 +1,38 @@
-#include <getopt.h>
+#include <math.h>
 #include <stdio.h>
 
-int flags(int argc, char *argv[]){
-    struct option long_options[] = {
-        {"help", no_argument,       0, 'h'},
-        {"verbose", required_argument, 0, 'v'},
-        {0, 0, 0, 0}
-    };
-    
-    int opt;
-    
-    while ((opt = getopt_long(argc, argv, "hv:",
-                             long_options, NULL)) != -1) {
-        switch (opt) {
-            case 'h':
-                printf("Help menu\n");
-                break;
-            case 'v':
-                printf("Verbose level: %s\n", optarg);
-                break;
-            default:
-                printf("Unknown option: %c\n", opt);
-                return 1;
-        }
-    }
-
-    return 0;
+float ft1(float x) {
+    return expf(-x) + 3;
 }
 
-int main(int argc, char *argv[]) {
+float ft2(float x) {
+    return 2 * x - 2;
+}
 
-    int errors = flags(argc, argv);
-    // struct option long_options[] = {
-    //     {"help", no_argument,       0, 'h'},
-    //     {"verbose", required_argument, 0, 'v'},
-    //     {0, 0, 0, 0}
-    // };
-    
-    // int opt;
-    
-    // while ((opt = getopt_long(argc, argv, "hv:",
-    //                          long_options, NULL)) != -1) {
-    //     switch (opt) {
-    //         case 'h':
-    //             printf("Help menu\n");
-    //             break;
-    //         case 'v':
-    //             printf("Verbose level: %s\n", optarg);
-    //             break;
-    //         default:
-    //             printf("Unknown option: %c\n", opt);
-    //             return 1;
-    //     }
-    // }
-    
-    printf("Количество ошибок = %d\n", errors);
+float ft3(float x) {
+    return 1 / x;
+}
 
-    return 0;
+float sec_der_ft1(float x) {
+    return expf(-x);
+}
+
+float sec_der_ft3(float x) {
+    return 2 * (1 / (x * x * x));
+}
+
+float dif_sec_der_ft1_ft3(float x) {
+    return (sec_der_ft1(x) - sec_der_ft3(x));
+}
+
+float dif_ft1_ft2(float x) {
+    return (ft1(x) - ft2(x));
+}
+
+float dif_ft1_ft3(float x) {
+    return (ft1(x) - ft3(x));
+}
+
+float dif_ft2_ft3(float x) {
+    return (ft2(x) - ft3(x));
 }
