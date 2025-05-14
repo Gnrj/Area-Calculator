@@ -6,6 +6,7 @@ int flags(int argc, char* argv[]) {
         {"help", no_argument, 0, 'h'},
         {"points", no_argument, 0, 'p'},
         {"iterations", no_argument, 0, 'i'},
+        {"test", no_argument, 0, 't'},
         {0, 0, 0, 0}
 
     };
@@ -14,7 +15,7 @@ int flags(int argc, char* argv[]) {
 
     int mode = 0;
 
-    while ((opt = getopt_long(argc, argv, "hpik:",
+    while ((opt = getopt_long(argc, argv, "hpitk:",
 
                               long_options, NULL)) != -1) {
         switch (opt) {
@@ -28,10 +29,14 @@ int flags(int argc, char* argv[]) {
         case 'i':
             mode += 3;
             break;
+        case 't':
+            printf("Strat test\n");
+            mode += 4;
+            break;
         default:
             printf("Unknown option: %c\n", opt);
 
-            return 4;
+            return 6;
         }
     }
 
