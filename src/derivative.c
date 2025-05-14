@@ -1,18 +1,18 @@
 #include <math.h>
 #include <stdio.h>
 
-float sec_der_f1(float x) {
-    return expf(-x);
+double sec_der_f1(double x) {
+    return exp(-x);
 }
 
-float sec_der_f2(float x) {
+double sec_der_f2(double x) {
     return 0.0;
 }
 
-float sec_der_f3(float x) {
+double sec_der_f3(double x) {
     return 2 * (1 / (x * x * x));
 }
 
-float dif_sec_der_f1_f3(float x) {
+double dif_sec_der_f1_f3(double x) {
     return (sec_der_f1(x) - sec_der_f3(x));
 }

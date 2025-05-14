@@ -1,25 +1,25 @@
-typedef float (*Func)(float);
+typedef double (*Func)(double);
 
-float f1(float x);
-float f2(float x);
-float f3(float x);
+double f1(double x);
+double f2(double x);
+double f3(double x);
 
-float root(Func f1, Func f2, float a, float b, float e);
+double root(Func f1, Func f2, double a, double b, double e);
 
-float ft1(float x);
-float ft2(float x);
-float ft3(float x);
+double ft1(double x);
+double ft2(double x);
+double ft3(double x);
 
-float sec_der_f1(float x);
-float sec_der_f2(float x);
-float sec_der_f3(float x);
+double sec_der_f1(double x);
+double sec_der_f2(double x);
+double sec_der_f3(double x);
 
-float dif_sec_der_f1_f3(float x);
+double dif_sec_der_f1_f3(double x);
 
 extern int iterations_chords;
 
-float dif_f1_f2(float x);
-float dif_f1_f3(float x);
-float dif_f2_f3(float x);
+double dif_f1_f2(double x);
+double dif_f1_f3(double x);
+double dif_f2_f3(double x);
 
-float integral(Func f1, Func sec_dir_f, float a, float b, float esp2);
+double integral(Func f1, Func sec_dir_f, double a, double b, double esp2);

@@ -4,17 +4,17 @@
 
 #define EPS 1e-6f
 
-typedef float (*Func)(float);
+typedef double (*Func)(double);
 
-float F_x(Func f1, Func f2, float x, float b) {
-    float f_x = f1(x) - f2(x);
-    float f_b = f1(b) - f2(b);
+double F_x(Func f1, Func f2, double x, double b) {
+    double f_x = f1(x) - f2(x);
+    double f_b = f1(b) - f2(b);
 
     return (x - (f_x * (b - x)) / (f_b - f_x));
 }
 
-float root(Func f1, Func f2, float a, float b, float e) {
-    float x = a;
+double root(Func f1, Func f2, double a, double b, double e) {
+    double x = a;
 
     iterations_chords++;
 

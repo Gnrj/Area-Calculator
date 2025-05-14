@@ -5,35 +5,35 @@
 
 #define EPS 1e-6f
 
-typedef float (*Func)(float);
+typedef double (*Func)(double);
 
-int rate(Func f, float a1, float a2, float esp2) {
+int rate(Func f, double a1, double a2, double esp2) {
 
-    float dif = fabs((a2 - a1) * (a2 - a1) * (a2 - a1));
+    double dif = fabs((a2 - a1) * (a2 - a1) * (a2 - a1));
 
-    int n = (int)sqrtf(dif * fabs(f(a2)) / (12 * esp2)) + 1;
+    int n = (int)sqrt(dif * fabs(f(a2)) / (12 * esp2)) + 1;
 
     return n;
 }
 
-void swap_float(float* a, float* b) {
+void swap_double(double* a, double* b) {
     float temp = *a;
     *a = *b;
     *b = temp;
 }
 
-float integral(Func f1, Func sec_def_f, float a, float b, float esp2) {
+double integral(Func f1, Func sec_def_f, double a, double b, double esp2) {
 
     int n = rate(sec_def_f, a, b, esp2);
 
     if (a - b > EPS) {
-        swap_float(&a, &b);
+        swap_double(&a, &b);
     }
 
-    float sum = f1(a) + f1(b);
+    double sum = f1(a) + f1(b);
 
     for (int k = 1; k < n - 1; k++) {
-        float x = a + (k * ((b - a) / n));
+        double x = a + (k * ((b - a) / n));
         sum += 2 * (f1(x));
     }
 

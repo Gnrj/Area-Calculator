@@ -7,8 +7,6 @@
 #define VAREPSILON_1 0.001 - (1e-10f)
 #define VAREPSILON_2 1e-10f
 
-typedef float (*Func)(float);
-
 enum mode {
     HELP = 1,
     POINTS = 2,
@@ -34,7 +32,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    float points[3];
+    double points[3];
     int func_iterations[3];
 
     points[0] = root(ft1, ft3, 0.01, 0.5, VAREPSILON_1);
@@ -75,8 +73,8 @@ int main(int argc, char* argv[]) {
         printf("Количество итераций при подсчёте точек пересечения кривых 2x-2 и 1/x: %d\n", func_iterations[1]);
     }
 
-    float square_f1_f2 = integral(dif_f1_f2, sec_der_f1, points[2], points[1], VAREPSILON_2);
-    float square_f1_f3 = integral(dif_f1_f3, dif_sec_der_f1_f3, points[0], points[1], VAREPSILON_2);
+    double square_f1_f2 = integral(dif_f1_f2, sec_der_f1, points[2], points[1], VAREPSILON_2);
+    double square_f1_f3 = integral(dif_f1_f3, dif_sec_der_f1_f3, points[0], points[1], VAREPSILON_2);
 
     printf("Square = %f\n", square_f1_f2 + square_f1_f3);
 

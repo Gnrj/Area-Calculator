@@ -1,26 +1,26 @@
 #include <math.h>
 #include <stdio.h>
 
-float ft1(float x) {
-    return expf(-x) + 3;
+double ft1(double x) {
+    return exp(-x) + 3;
 }
 
-float ft2(float x) {
+double ft2(double x) {
     return 2 * x - 2;
 }
 
-float ft3(float x) {
+double ft3(double x) {
     return 1 / x;
 }
 
-float dif_f1_f2(float x) {
+double dif_f1_f2(double x) {
     return (ft1(x) - ft2(x));
 }
 
-float dif_f1_f3(float x) {
+double dif_f1_f3(double x) {
     return (ft1(x) - ft3(x));
 }
 
-float dif_f2_f3(float x) {
+double dif_f2_f3(double x) {
     return (ft2(x) - ft3(x));
 }
