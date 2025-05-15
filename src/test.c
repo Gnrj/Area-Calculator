@@ -1,4 +1,7 @@
+#include <math.h>
 #include <stdio.h>
+
+#include "../header_file.h"
 
 #define EPS 1e-6
 
@@ -34,29 +37,73 @@ int test_chords(void) {
         scanf("%lf %lf", &a1, &a2);
     }
 
+    printf("Введите погрешность: ");
+    double esp;
+    scanf("%lf", &esp);
+
+    double x;
+
     if (f1 == 1) {
         switch (f2) {
         case 2:
-            if (a1 > 0.0 & a2 < 0.0) {
-                printf("Функция 1/x не определена на данном промежутке, точки пересечения нет\n");
-                return 1;
-            }
+            x = root(ft1, ft2, a1, a2, esp);
             break;
-
+        case 3:
+            x = root(ft1, ft3, a1, a2, esp);
+            break;
         default:
+            x = NAN;
             break;
         }
+    }
+
+    if (f1 == 2) {
+        switch (f2) {
+        case 1:
+            x = root(ft1, ft2, a1, a2, esp);
+            break;
+        case 3:
+            x = root(ft2, ft3, a1, a2, esp);
+            break;
+        default:
+            x = NAN;
+            break;
+        }
+    }
+
+    if (f1 == 3) {
+        switch (f2) {
+        case 1:
+            x = root(ft1, ft3, a1, a2, esp);
+            break;
+        case 2:
+            x = root(ft2, ft3, a1, a2, esp);
+            break;
+        default:
+            x = NAN;
+            break;
+        }
+    }
+
+    if (!isnan(x)) {
+        printf("Точка пересечения заданных функций равна: %lf\n", x);
+        printf("Было затрачено следующее количество итераций: %d.\n", iterations_chords);
     }
 
     return 0;
 }
 
 int test(void) {
-    printf("Пожалуйста введите:\n1, если хотите протестировать метод хорд;\n");
-    printf("2, если хотите протестировать подсчёт интеграла\n");
+    printf("Пожалуйста введите:\n1, если хотите протестировать функцию нахождения точки пересечения;\n");
+    printf("2, если хотите протестировать подсчёт интеграла;\n");
+    printf("Введите желаемое вами значение: ");
 
     int mode;
     scanf("%d", &mode);
+
+    if (mode == 1) {
+        int errors = test_chords();
+    }
 
     return 0;
 }

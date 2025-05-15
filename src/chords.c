@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#define EPS 1e-6f
+#define EPS 1e-10
 
 typedef double (*Func)(double);
 
@@ -25,13 +25,35 @@ double root(Func f1, Func f2, double a, double b, double e) {
 
     iterations_chords++;
 
-    while (!(fabs(F_x(f1, f2, x, a) - x) < e)) { // F_x(f1, f2, x, b)
-        printf("x = %lf\n", x);
-        x = F_x(f1, f2, x, a); // F_x(f1, f2, x, b)
-        iterations_chords++;
+    if (F_x(f1, f2, x, a) < a - EPS || F_x(f1, f2, x, a) > b - EPS) {
+        printf("На этом отрезке нет точки пересечения либо одна из функций не определена.\n");
+
+        return NAN;
     }
 
-    printf("\n\n\n");
+    if (isnan(F_x(f1, f2, x, a))) {
+        printf("На этом отрезке одна из функций не опередела.\n");
+
+        return NAN;
+    }
+
+    while (!(fabs(F_x(f1, f2, x, a) - x) < e)) { // F_x(f1, f2, x, b)
+        x = F_x(f1, f2, x, a);                   // F_x(f1, f2, x, b)
+
+        if (x < a - EPS || x > b - EPS) {
+            printf("На этом отрезке нет точки пересечения либо одна из функций не определена.\n");
+
+            return NAN;
+        }
+
+        if (isnan(x)) {
+            printf("На этом отрезке одна из функций не опередела.\n");
+
+            return NAN;
+        }
+
+        iterations_chords++;
+    }
 
     return x;
 }

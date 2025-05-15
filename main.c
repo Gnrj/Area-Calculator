@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     double points[3];
     int func_iterations[3];
 
-    points[0] = root(ft1, ft3, 0.1, 0.5, VAREPSILON_1); // 0.1, 0.5, если меньше a1, то гг
+    points[0] = root(ft1, ft3, 0.1, 0.5, VAREPSILON_1); // 0.1, 0.5, если меньше a1 либо a2, то гг
     func_iterations[0] = iterations_chords;
     iterations_chords = 0;
 
