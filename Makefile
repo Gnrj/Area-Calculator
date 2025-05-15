@@ -7,7 +7,7 @@ FILES := main.o flags.o difference.o chords.o integral.o derivative.o test.o fun
 
 TRG := compile_functions compile_main compile_flags compile_test compile_chords compile_integral compile_derivative compile_difference
 
-CFLAGS = -m32 -std=c99 -lm
+CFLAGS = -O2 -Wall -Werror -Wformat-security -Wignored-qualifiers -Winit-self -Wswitch-default -Wfloat-equal -Wpointer-arith -Wtype-limits -Wempty-body -Wno-logical-op -Wstrict-prototypes -Wold-style-declaration -Wold-style-definition -Wmissing-parameter-type -Wmissing-field-initializers -Wnested-externs -Wno-pointer-sign -Wno-unused-result -std=c99 -lm -m32
 
 all: link_files clean ## Make run and clean
 

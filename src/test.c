@@ -46,7 +46,7 @@ int test_chords(void) {
         scanf("%lf", &esp);
     }
 
-    double x;
+    double x = 0;
 
     if (ft1 == 1) {
         switch (ft2) {
@@ -127,7 +127,7 @@ int test_integral(void) {
     double x;
 
     if (mode == 1) {
-        if (a1 < 0.0 & a2 > 0.0) {
+        if (a1 < 0.0 && a2 > 0.0) {
             printf("Функция 1/x не определена на данном промежутке.\n");
             return 1;
         }
@@ -151,11 +151,13 @@ int test(void) {
     int mode;
     scanf("%d", &mode);
 
+    int errors = 0;
+
     if (mode == 1) {
-        int errors = test_chords();
+        errors = test_chords();
     } else {
-        int errors = test_integral();
+        errors = test_integral();
     }
 
-    return 0;
+    return errors;
 }
