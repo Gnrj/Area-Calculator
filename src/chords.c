@@ -6,13 +6,6 @@
 
 typedef double (*Func)(double);
 
-// double F_x(Func f1, Func f2, double x, double b) {
-//     double f_x = f1(x) - f2(x);
-//     double f_b = f1(b) - f2(b);
-
-//     return (x - (f_x * (b - x)) / (f_b - f_x));
-// }
-
 double F_x(Func f1, Func f2, double x, double a) {
     double f_x = f1(x) - f2(x);
     double f_a = f1(a) - f2(a);

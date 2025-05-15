@@ -6,10 +6,10 @@ global f3
 f1: ;exp(-x)+3
     push ebp
     mov ebp, esp
-    sub esp, 4
+    sub esp, 8
 
     finit
-    fld dword[ebp+8]
+    fld qword[ebp+8]
     fchs ;-x
     fldl2e ;log2e
     fmulp
@@ -43,7 +43,7 @@ f2: ;2x-2
     mov ebp, esp
     
     finit
-    fld dword[ebp+8] ;st0 = x
+    fld qword[ebp+8] ;st0 = x
     fld1
     fsubp ;st0 = x-1
     fld1
@@ -61,7 +61,7 @@ f3: ;1/x
     
     finit
     fld1
-    fld dword[ebp+8]
+    fld qword[ebp+8]
     fdivp
 
     mov esp, ebp

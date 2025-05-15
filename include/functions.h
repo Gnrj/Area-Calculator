@@ -6,10 +6,6 @@ double f3(double x);
 
 double root(Func f1, Func f2, double a, double b, double e);
 
-double ft1(double x);
-double ft2(double x);
-double ft3(double x);
-
 double sec_der_f1(double x);
 double sec_der_f2(double x);
 double sec_der_f3(double x);

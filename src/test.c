@@ -9,20 +9,20 @@ int test_chords(void) {
     printf("Выберите, пожалуйста, две функции: 1) exp(-x)+3; 2) 2x-2; 3) 1/x\n");
     printf("Введите например 1 2: ");
 
-    int f1, f2;
-    scanf("%d %d", &f1, &f2);
+    int ft1, ft2;
+    scanf("%d %d", &ft1, &ft2);
 
-    while (f1 == f2) {
+    while (ft1 == ft2) {
         printf("Вы выбрали две одиннаковые функции, выберите, пожалуйста, ещё раз: ");
-        scanf("%d %d", &f1, &f2);
+        scanf("%d %d", &ft1, &ft2);
     }
 
-    while (f1 > 3 || f2 > 3) {
+    while (ft1 > 3 || ft2 > 3) {
         printf("Вы выбрали функцию, которой нет, выберите, пожалуйста, ещё раз: ");
-        scanf("%d %d", &f1, &f2);
+        scanf("%d %d", &ft1, &ft2);
     }
 
-    if ((f1 == f2) || (f1 > 3 || f2 > 3)) {
+    if ((ft1 == ft2) || (ft1 > 3 || ft2 > 3)) {
         printf("Если вы не хотите по-хорошему, то до свидания!\n");
         return 0;
     }
@@ -48,13 +48,13 @@ int test_chords(void) {
 
     double x;
 
-    if (f1 == 1) {
-        switch (f2) {
+    if (ft1 == 1) {
+        switch (ft2) {
         case 2:
-            x = root(ft1, ft2, a1, a2, esp);
+            x = root(f1, f2, a1, a2, esp);
             break;
         case 3:
-            x = root(ft1, ft3, a1, a2, esp);
+            x = root(f1, f3, a1, a2, esp);
             break;
         default:
             x = NAN;
@@ -62,13 +62,13 @@ int test_chords(void) {
         }
     }
 
-    if (f1 == 2) {
-        switch (f2) {
+    if (ft1 == 2) {
+        switch (ft2) {
         case 1:
-            x = root(ft1, ft2, a1, a2, esp);
+            x = root(f1, f2, a1, a2, esp);
             break;
         case 3:
-            x = root(ft2, ft3, a1, a2, esp);
+            x = root(f2, f3, a1, a2, esp);
             break;
         default:
             x = NAN;
@@ -76,13 +76,13 @@ int test_chords(void) {
         }
     }
 
-    if (f1 == 3) {
-        switch (f2) {
+    if (ft1 == 3) {
+        switch (ft2) {
         case 1:
-            x = root(ft1, ft3, a1, a2, esp);
+            x = root(f1, f3, a1, a2, esp);
             break;
         case 2:
-            x = root(ft2, ft3, a1, a2, esp);
+            x = root(f2, f3, a1, a2, esp);
             break;
         default:
             x = NAN;
