@@ -26,13 +26,13 @@ double root(Func f1, Func f2, double a, double b, double e) {
     iterations_chords++;
 
     if (F_x(f1, f2, x, a) < a - EPS || F_x(f1, f2, x, a) > b - EPS) {
-        printf("На этом отрезке нет точки пересечения либо одна из функций не определена.\n");
+        printf("На данном отрезке нет точки пересечения либо одна из функций не определена.\n");
 
         return NAN;
     }
 
     if (isnan(F_x(f1, f2, x, a))) {
-        printf("На этом отрезке одна из функций не опередела.\n");
+        printf("На данном отрезке одна из функций не опередела.\n");
 
         return NAN;
     }
@@ -41,13 +41,13 @@ double root(Func f1, Func f2, double a, double b, double e) {
         x = F_x(f1, f2, x, a);                   // F_x(f1, f2, x, b)
 
         if (x < a - EPS || x > b - EPS) {
-            printf("На этом отрезке нет точки пересечения либо одна из функций не определена.\n");
+            printf("На данном отрезке нет точки пересечения либо одна из функций не определена.\n");
 
             return NAN;
         }
 
         if (isnan(x)) {
-            printf("На этом отрезке одна из функций не опередела.\n");
+            printf("На данном отрезке одна из функций не опередела.\n");
 
             return NAN;
         }

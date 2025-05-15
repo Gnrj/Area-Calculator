@@ -3,15 +3,19 @@
 
 #include "../header_file.h"
 
-#define EPS 1e-6f
+#define EPS 1e-6
 
 typedef double (*Func)(double);
+
+double max_double(double a1, double a2) {
+    return (a1 - a2 > EPS) ? a1 : a2;
+}
 
 int rate(Func f, double a1, double a2, double esp2) {
 
     double dif = fabs((a2 - a1) * (a2 - a1) * (a2 - a1));
 
-    int n = (int)sqrt(dif * fabs(f(a2)) / (12 * esp2)) + 1;
+    int n = (int)sqrt(dif * max_double(fabs(f(a2)), fabs(f(a1))) / (12 * esp2)) + 1;
 
     return n;
 }
@@ -22,6 +26,8 @@ void swap_double(double* a, double* b) {
     *b = temp;
 }
 
+int iterations_integral = 0;
+
 double integral(Func f1, Func sec_def_f, double a, double b, double esp2) {
 
     int n = rate(sec_def_f, a, b, esp2);
@@ -29,6 +35,8 @@ double integral(Func f1, Func sec_def_f, double a, double b, double esp2) {
     if (a - b > EPS) {
         swap_double(&a, &b);
     }
+
+    iterations_integral = n;
 
     double sum = f1(a) + f1(b);
 

@@ -17,6 +17,7 @@ double sec_der_f3(double x);
 double dif_sec_der_f1_f3(double x);
 
 extern int iterations_chords;
+extern int iterations_integral;
 
 double dif_f1_f2(double x);
 double dif_f1_f3(double x);
