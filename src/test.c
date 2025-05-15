@@ -151,12 +151,17 @@ int test(void) {
     int mode;
     scanf("%d", &mode);
 
-    int errors = 0;
+    int errors = 1;
 
-    if (mode == 1) {
+    switch (mode) {
+    case 1:
         errors = test_chords();
-    } else {
+        break;
+    case 2:
         errors = test_integral();
+    default:
+        printf("Вы выбрали не существующий режим.\n");
+        break;
     }
 
     return errors;

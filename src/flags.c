@@ -20,7 +20,7 @@ int flags(int argc, char* argv[]) {
                               long_options, NULL)) != -1) {
         switch (opt) {
         case 'h':
-            printf("Help menu:\n");
+            printf("Подсказка:\n");
             return 1;
             break;
         case 'p':
@@ -30,11 +30,11 @@ int flags(int argc, char* argv[]) {
             mode += 3;
             break;
         case 't':
-            printf("Strat test\n");
+            printf("Начинаем тестирование\n");
             mode += 4;
             break;
         default:
-            printf("Unknown option: %c\n", opt);
+            printf("Неизвестный флаг: %c\n", opt);
 
             return 6;
         }
