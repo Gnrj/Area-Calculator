@@ -1,51 +1,39 @@
-
 CC := gcc
 NASM := nasm
-X_FILE := Area-Calculator.x
-
-FILES := main.o flags.o difference.o chords.o integral.o derivative.o test.o functions.o
-
-TRG := compile_functions compile_main compile_flags compile_test compile_chords compile_integral compile_derivative compile_difference
+X_FILE := Area-Calculator
+OBJ_DIR := obj
 
 CFLAGS = -O2 -Wall -Werror -Wformat-security -Wignored-qualifiers -Winit-self -Wswitch-default -Wfloat-equal -Wpointer-arith -Wtype-limits -Wempty-body -Wno-logical-op -Wstrict-prototypes -Wold-style-declaration -Wold-style-definition -Wmissing-parameter-type -Wmissing-field-initializers -Wnested-externs -Wno-pointer-sign -Wno-unused-result -std=c99 -lm -m32
+ASMFLAGS = -f elf32
 
-all: link_files clean ## Make run and clean
+LDFLAGS = -lm -m32
+
+C_SRCS = $(wildcard src/*.c)
+ASM_SRCS = $(wildcard srasm/*.asm)
+
+C_OBJS = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(C_SRCS)) 
+ASM_OBJS = $(patsubst srasm/%.asm, obj/%.o, $(ASM_SRCS))
+
+OBJS = $(C_OBJS) $(ASM_OBJS)
+
+.PHONY: all clean
+
+all: $(X_FILE) ## Make run and clean
 
 help: ## Show help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-link_files: ${TRG} ## Compile and link all files to program.x
-	@${CC} -m32 ${FILES} -o $(X_FILE) -lm
+$(X_FILE): $(OBJS) ## Compile and link all files to program.x
+	@$(CC) -m32 -o $@ $^ -lm
 
-compile_main: main.c ## Сompile main.c
-	@${CC} ${CFLAGS} -c main.c -o main.o
+$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
-compile_flags: src/flags.c ## Compile flags.c
-	@${CC} ${CFLAGS} -c src/flags.c -o flags.o
+$(OBJ_DIR)/%.o: srasm/%.asm | $(OBJ_DIR)
+	@${NASM} $(ASMFLAGS) -o $@ $<
 
-compile_functions: srasm/functions.asm ## Сompile functions.asm
-	@${NASM} -f elf32 srasm/functions.asm -o functions.o
-
-compile_chords: src/chords.c ## Compile chords.c
-	@${CC} ${CFLAGS} -c src/chords.c -o chords.o
-
-compile_difference: src/difference.c ## Compile difference.c
-	@${CC} ${CFLAGS} -c src/difference.c -o difference.o
-
-compile_integral: src/integral.c ## Compile integral.c
-	@${CC} ${CFLAGS} -c src/integral.c -o integral.o
-
-compile_derivative: src/derivative.c ## Compile derivate.c
-	@${CC} ${CFLAGS} -c src/derivative.c -o derivative.o
-
-compile_test: src/test.c ## Compile test.c
-	@${CC} ${CFLAGS} -c src/test.c -o test.o
-
-run: link_files ## Compile and link all files and run program
-	@./${X_FILE}
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 clean: ## Delete output files without object file
-	@rm *.o 2>/dev/null || true
-
-clean_object: ## Delete object file
-	@rm ${X_FILE} 2>/dev/null || true
+	@rm -rf $(OBJ_DIR) $(X_FILE)   2>/dev/null || true

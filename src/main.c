@@ -2,7 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "header_file.h"
+#include "../include/flags.h"
+#include "../include/functions.h"
 
 #define VAREPSILON_1 1e-10 // 0.001 - (1e-10)
 #define VAREPSILON_2 1e-10
