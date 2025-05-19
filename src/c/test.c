@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "../include/functions.h"
+#include "../../include/functions.h"
 
 #define EPS 1e-6
 

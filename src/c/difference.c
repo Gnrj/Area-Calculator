@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "../include/functions.h"
+#include "../../include/functions.h"
 
 double dif_f1_f2(double x) {
     return (f1(x) - f2(x));
