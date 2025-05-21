@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
         printf("Количество итераций при подсчёте точек пересечения кривых 2x-2 и 1/x: %d\n", func_iterations[1]);
     }
 
-    double square_f1_f2 = integral(dif_f1_f2, sec_der_f1, points[2], points[1], VAREPSILON_2);
+    double square_f1_f2 = integral(dif_f1_f2, sec_der_f1, points[1], points[2], VAREPSILON_2);
     double square_f1_f3 = integral(dif_f1_f3, dif_sec_der_f1_f3, points[0], points[1], VAREPSILON_2);
 
     printf("Square = %lf\n", square_f1_f2 + square_f1_f3);

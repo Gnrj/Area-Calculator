@@ -20,21 +20,11 @@ int rate(Func f, double a1, double a2, double esp2) {
     return n;
 }
 
-void swap_double(double* a, double* b) {
-    float temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 int iterations_integral = 0;
 
 double integral(Func f1, Func sec_def_f, double a, double b, double esp2) {
 
     int n = rate(sec_def_f, a, b, esp2);
-
-    if (a - b > EPS) {
-        swap_double(&a, &b);
-    }
 
     iterations_integral = n;
 
