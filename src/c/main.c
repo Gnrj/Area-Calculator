@@ -5,8 +5,8 @@
 #include "../../include/flags.h"
 #include "../../include/functions.h"
 
-#define VAREPSILON_1 1e-10 // 0.001 - (1e-10)
-#define VAREPSILON_2 1e-10
+#define VAREPSILON_1 0.001 - (1e-5)
+#define VAREPSILON_2 1e-5
 
 enum mode {
     HELP = 1,

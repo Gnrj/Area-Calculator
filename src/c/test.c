@@ -159,6 +159,7 @@ int test(void) {
         break;
     case 2:
         errors = test_integral();
+	break;
     default:
         printf("Вы выбрали не существующий режим.\n");
         break;
