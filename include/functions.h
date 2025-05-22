@@ -4,7 +4,8 @@ double f1(double x);
 double f2(double x);
 double f3(double x);
 
-double root(Func f1, Func f2, double a, double b, double e);
+double root(Func f1, Func f2, double a, double b, double esp);
+double bisection(Func f1, Func f2, double a, double b, double esp);
 
 double sec_der_f1(double x);
 double sec_der_f2(double x);
